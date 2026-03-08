@@ -7,12 +7,13 @@ import 'dotenv/config';
 async function bootstrap() {
     const app = await NestFactory.create(AppModule);
 
-    // CORS Configuration
-    app.enableCors({
-        origin: '*',
-        methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-        allowedHeaders: ['Content-Type', 'Authorization'],
-    });
+    // CORS configuration
+app.enableCors({
+  origin: ['http://localhost:8081', 'http://192.168.0.33:8081', 'http://192.168.0.33:5000', 'https://ivylearner-frontend.vercel.app', 'https://ivylearner-frontend.onrender.com', 'https://ivylearner-frontend.netlify.app'],
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'PATCH'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true,
+});
 
     // Global prefix
     app.setGlobalPrefix('api');
