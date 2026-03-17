@@ -22,11 +22,17 @@ import { EnrollmentsModule } from './enrollments/enrollments.module';
 import { UserProfilesModule } from './user-profiles/user-profiles.module';
 // import { LiveRoomsModule } from './live-rooms/live-rooms.module';
 import { LiveRoomsModule } from './live-rooms/live-rooms.module';
+import { ConfigModule } from '@nestjs/config/dist/config.module';
 
 
 
 @Module({
     imports: [
+        ConfigModule.forRoot({
+            isGlobal: true,
+              envFilePath: `.env.${process.env.NODE_ENV}`,
+
+        }),
         // StudentsModule,
         EnrollmentsModule,
         LessonsModule,
