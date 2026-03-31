@@ -53,7 +53,7 @@ export class AppController {
     @ApiResponse({ status: 200, description: 'Returns current user' })
     @ApiResponse({ status: 401, description: 'Unauthorized' })
     async authenticateUser(@Request() req) {
-
+        console.log('request.user from JWT:', req.user);
         const user = await this.usersService.findById(req.user.id);
         console.log('Authenticated user:', user);
         return {
