@@ -2,7 +2,8 @@
 /dist
 /node_modules
 /build
-
+*.pem
+*.pem
 # Logs
 logs
 *.log
