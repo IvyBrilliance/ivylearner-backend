@@ -4,19 +4,25 @@ import { ValidationPipe } from '@nestjs/common';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import 'dotenv/config';
 
+console.log('Current NODE_ENV:', process.env.NODE_ENV);
+console.log('Database URL exists?:', !!process.env.DATABASE_URL); // Replace with one of your vars
+
 async function bootstrap() {
     const app = await NestFactory.create(AppModule);
 
     // CORS configuration
 app.enableCors({
-  origin: ['http://localhost:8081', 'http://192.168.0.33:8081', 'http://192.168.0.33:5000', 'https://ivylearner-frontend.vercel.app', 'https://ivylearner-frontend.onrender.com', 'https://ivylearner-frontend.netlify.app'],
+  origin: ['http://localhost:8081',
+    'http://192.168.0.33:8081',
+    'https://ivybrilliance.com',
+    'https://www.ivybrilliance.com'],
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'PATCH'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true,
 });
 
     // Global prefix
-    app.setGlobalPrefix('api');
+    app.setGlobalPrefix('backend');
 
     // Global validation pipe
     app.useGlobalPipes(
