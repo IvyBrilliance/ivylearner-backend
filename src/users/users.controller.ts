@@ -89,6 +89,7 @@ export class UsersController {
     @ApiBody({ type: LoginDto })
     async login(@Request() req: any) {
         const accessToken = await this.authService.login(req.user);
+        console.log('Login successful, access token generated:', accessToken);
         return {
             statusCode: 200,
             message: 'Login successful',
